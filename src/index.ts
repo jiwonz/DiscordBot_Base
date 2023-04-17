@@ -2,8 +2,6 @@ import { IntentsBitField, Collection } from "discord.js"
 import { BotClient } from "./classes/BotClient"
 import * as fs from "fs"
 
-//test
-
 const config:{
     TOKEN:string,
     CLIENT_ID:string
