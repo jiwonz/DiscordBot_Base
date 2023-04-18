@@ -29,3 +29,5 @@ for (const file of dir.functions) {
 client.handleEvents(dir.events,"./src/events")
 client.handleCommands(dir.commands,"./src/commands")
 client.login(config.TOKEN)
+
+export default client
