@@ -8,7 +8,7 @@ export default {
         if (!command) return
         
         try{
-            await command.execute(interaction, client)
+            await command.execute(client, interaction)
         } catch (error) {
             console.log(error)
             await interaction.reply({
