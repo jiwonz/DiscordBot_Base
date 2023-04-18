@@ -18,7 +18,7 @@ const client:BotClient = new BotClient({
 client.commands = new Collection()
 
 const dir = {
-    functions:fs.readdirSync("./src/functions").filter(file => file.endsWith(".ts")),
+    //functions:fs.readdirSync("./src/functions").filter(file => file.endsWith(".ts")),
     events:fs.readdirSync("./src/events").filter(file => file.endsWith(".ts")),
     commands:fs.readdirSync("./src/commands")
 }
