@@ -4,7 +4,8 @@ import * as fs from "fs"
 
 const config:{
     TOKEN:string,
-    CLIENT_ID:string
+    CLIENT_ID:string,
+    WHITELIST:{},
 } = require("../config.json")
 
 const client:BotClient = new BotClient({
