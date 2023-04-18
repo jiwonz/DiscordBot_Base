@@ -54,7 +54,7 @@ export class BotClient extends Client {
         })()}
     }
 
-    isWhitelisted(userId:number) {
+    isWhitelisted(userId:string) {
         return Object.values(config.WHITELIST).includes(userId) == true
     }
     
