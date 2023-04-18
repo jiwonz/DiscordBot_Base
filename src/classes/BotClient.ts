@@ -3,6 +3,7 @@ import { REST } from "@discordjs/rest"
 import { Routes } from "discord-api-types/v10"
 import * as fs from "fs"
 import { config } from "../index"
+import { ObjectFlags } from "typescript"
 
 export class BotClient extends Client {
     constructor(config) {
@@ -51,6 +52,10 @@ export class BotClient extends Client {
                 console.error(error)
             }
         })()}
+    }
+
+    isWhitelisted(userId:number) {
+        return Object.values(config.WHITELIST).includes(userId) == true
     }
     
     public commands:Collection<any,any>
