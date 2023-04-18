@@ -1,11 +1,58 @@
 import { Client, Collection } from "discord.js"
+import { REST } from "@discordjs/rest"
+import { Routes } from "discord-api-types/v10"
+import * as fs from "fs"
+import { config } from "../index"
 
 export class BotClient extends Client {
     constructor(config) {
         super(config)
     }
+
+    async handleEvents(eventFiles) {
+        for (const file of eventFiles) {
+            const event = require(`../events/${file}`)
+            const filename = file.replace(".ts","")
+            if (event.once) {
+                this.once(filename, (...args) => event.default.execute(...args,this))
+            } else {
+                this.on(filename, (...args) => event.default.execute(...args,this))
+            }
+        }
+    }
+
+    async handleCommands(commandFolders:Array<{}>,path:string) {
+        this.commandArray = []
+        for (const folder of commandFolders) {
+            const commandFiles = fs.readdirSync(`${path}/${folder}`).filter(file => file.endsWith(".ts"))
+            for (const file of commandFiles) {
+                const command = require(`../commands/${folder}/${file}`).default
+                this.commands.set(command.data.name, command)
+                this.commandArray.push(command.data.toJSON())
+            }
+        }
+
+        const rest:REST = new REST({
+            version: "10"
+        }).setToken(config.TOKEN)
+
+        {(async () => {
+            try {
+                console.log("Started refreshing application (/) commands.")
+
+                await rest.put(
+                    Routes.applicationCommands(config.CLIENT_ID), {
+                        body: this.commandArray
+                    },
+                )
+
+                console.log("Successfully reloaded application (/) commands.")
+            } catch (error) {
+                console.error(error)
+            }
+        })()}
+    }
+    
     public commands:Collection<any,any>
-    public handleCommands:any
-    public handleEvents:any
     public commandArray:Array<[]>
 }

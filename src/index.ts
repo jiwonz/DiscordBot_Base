@@ -23,11 +23,12 @@ const dir = {
     commands:fs.readdirSync("./src/commands")
 }
 
-for (const file of dir.functions) {
-    require(`./functions/${file}`).default(client)
-}
-client.handleEvents(dir.events,"./src/events")
+//for (const file of dir.functions) {
+//    require(`./functions/${file}`).default(client)
+//}
+
+client.handleEvents(dir.events)
 client.handleCommands(dir.commands,"./src/commands")
 client.login(config.TOKEN)
 
-export default client
+export { client,config }
