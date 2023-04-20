@@ -54,9 +54,21 @@ export class BotClient extends Client {
         })()}
     }
 
-    isWhitelisted(userId:string) {
+    isWhitelisted(userId:string):boolean {
         return Object.values(config.WHITELIST).includes(userId) == true
     }
+
+    isDeveloper(userId:string):boolean {
+        const whitelistedUserIds = Object.values(config.WHITELIST);
+        const whitelistedUserNames = Object.keys(config.WHITELIST);
+        const index = whitelistedUserIds.indexOf(userId);
+        if (index !== -1) {
+          const userName = whitelistedUserNames[index];
+          return (config.DEVELOPERS as string[]).includes(userName);
+        } else {
+          return false;
+        }
+      }
     
     public commands:Collection<any,any>
     public commandArray:Array<[]>

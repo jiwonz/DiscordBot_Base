@@ -1,4 +1,7 @@
 {
     "TOKEN":"",
-    "CLIENT_ID":""
+    "CLIENT_ID":"",
+
+    "WHITELIST":{},
+    "DEVELOPERS":[]
 }

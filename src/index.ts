@@ -6,6 +6,7 @@ const config:{
     TOKEN:string,
     CLIENT_ID:string,
     WHITELIST:{},
+    DEVELOPERS:[]
 } = require("../config.json")
 
 const client:BotClient = new BotClient({
@@ -19,14 +20,9 @@ const client:BotClient = new BotClient({
 client.commands = new Collection()
 
 const dir = {
-    //functions:fs.readdirSync("./src/functions").filter(file => file.endsWith(".ts")),
     events:fs.readdirSync("./src/events").filter(file => file.endsWith(".ts")),
     commands:fs.readdirSync("./src/commands")
 }
-
-//for (const file of dir.functions) {
-//    require(`./functions/${file}`).default(client)
-//}
 
 client.handleEvents(dir.events)
 client.handleCommands(dir.commands,"./src/commands")
