@@ -1,1 +1,7 @@
-src/commands/*
+package.json
+tsconfig.json
+yarn.lock
+node_modules
+cfg/config.json
+cfg/secret.json
+.gitignore
