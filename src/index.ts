@@ -2,12 +2,15 @@ import { IntentsBitField, Collection } from "discord.js"
 import { BotClient } from "./classes/BotClient"
 import * as fs from "fs"
 
+const secret:{
+  TOKEN:string,
+  CLIENT_ID:string,
+} = require("../cfg/secret.json")
+
 const config:{
-    TOKEN:string,
-    CLIENT_ID:string,
     WHITELIST:{},
     DEVELOPERS:[]
-} = require("../config.json")
+} = require("../cfg/config.json")
 
 const client:BotClient = new BotClient({
   intents: [
@@ -26,6 +29,6 @@ const dir = {
 
 client.handleEvents(dir.events)
 client.handleCommands(dir.commands,"./src/commands")
-client.login(config.TOKEN)
+client.login(secret.TOKEN)
 
 export { client,config }
