@@ -1,0 +1,10 @@
+{
+    "WHITELIST": {},
+    "DEVELOPERS": [],
+
+    "STATUS": {
+        "InDev": true
+    },
+
+    "IN_DEV_MESSAGE": "The bot is currently in development mode. Available to bot developers only."
+}
