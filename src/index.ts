@@ -5,7 +5,7 @@ import * as fs from "fs"
 const secret:{
   TOKEN:string,
   CLIENT_ID:string,
-} = require("../../cfg/secret.json")
+} = require("../cfg/secret.json")
 
 const config:{
     WHITELIST:{},
