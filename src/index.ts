@@ -5,11 +5,13 @@ import * as fs from "fs"
 const secret:{
   TOKEN:string,
   CLIENT_ID:string,
-} = require("../cfg/secret.json")
+} = require("../../cfg/secret.json")
 
 const config:{
     WHITELIST:{},
-    DEVELOPERS:[]
+    DEVELOPERS:[],
+    STATUS:{},
+    IN_DEV_MESSAGE:string
 } = require("../cfg/config.json")
 
 const client:BotClient = new BotClient({
@@ -31,4 +33,4 @@ client.handleEvents(dir.events)
 client.handleCommands(dir.commands,"./src/commands")
 client.login(secret.TOKEN)
 
-export { client,config }
+export { client, config, secret }

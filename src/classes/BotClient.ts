@@ -2,8 +2,7 @@ import { Client, Collection } from "discord.js"
 import { REST } from "@discordjs/rest"
 import { Routes } from "discord-api-types/v10"
 import * as fs from "fs"
-import { config } from "../index"
-import { ObjectFlags } from "typescript"
+import { config, secret } from "../index"
 
 export class BotClient extends Client {
     constructor(config) {
@@ -35,14 +34,14 @@ export class BotClient extends Client {
 
         const rest:REST = new REST({
             version: "10"
-        }).setToken(config.TOKEN)
+        }).setToken(secret.TOKEN)
 
         {(async () => {
             try {
                 console.log("Started refreshing application (/) commands.")
 
                 await rest.put(
-                    Routes.applicationCommands(config.CLIENT_ID), {
+                    Routes.applicationCommands(secret.CLIENT_ID), {
                         body: this.commandArray
                     },
                 )

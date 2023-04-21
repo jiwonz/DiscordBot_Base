@@ -1,5 +1,6 @@
 import { Interaction } from "discord.js"
 import { BotClient } from "../classes/BotClient"
+import { config } from "../index"
 
 export default {
     async execute(interaction:Interaction, client:BotClient) {
@@ -11,7 +12,7 @@ export default {
             if (client.isDeveloper(interaction.member.user.id)) {
                 await command.execute(client, interaction)
             } else {
-                await interaction.reply({ content: "현재 봇이 개발 모드에 있습니다. 봇 개발자만 이용할 수 있습니다.", ephemeral: true })
+                await interaction.reply({ content: config.IN_DEV_MESSAGE, ephemeral: true })
             }
         } catch (error) {
             console.log(error)
