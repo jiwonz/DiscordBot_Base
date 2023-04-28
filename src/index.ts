@@ -2,6 +2,8 @@ import { IntentsBitField, Collection } from "discord.js"
 import { BotClient } from "./classes/BotClient"
 import * as fs from "fs"
 
+// GIT TEST
+
 const secret:{
   TOKEN:string,
   CLIENT_ID:string,
