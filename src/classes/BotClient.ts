@@ -4,8 +4,6 @@ import { Routes } from "discord-api-types/v10"
 import * as fs from "fs"
 import { config, secret } from "../index"
 
-//hello
-
 export class BotClient extends Client {
     constructor(config) {
         super(config)
