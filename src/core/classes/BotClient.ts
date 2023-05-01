@@ -2,7 +2,7 @@ import { Client, Collection } from "discord.js"
 import { REST } from "@discordjs/rest"
 import { Routes } from "discord-api-types/v10"
 import * as fs from "fs"
-import { config, secret } from "../index"
+import { config, secret } from "../../index"
 
 export class BotClient extends Client {
     constructor(config) {

@@ -1,18 +1,9 @@
 import { IntentsBitField, Collection } from "discord.js"
-import { BotClient } from "./classes/BotClient"
+import { BotClient } from "./core/classes/BotClient"
 import * as fs from "fs"
 
-const secret:{
-  TOKEN:string,
-  CLIENT_ID:string,
-} = require("../cfg/secret.json")
-
-const config:{
-    WHITELIST:{},
-    DEVELOPERS:[],
-    STATUS:{},
-    IN_DEV_MESSAGE:string
-} = require("../cfg/config.json")
+import config from "./cfg/config.json"
+import secret from "./cfg/secret.json"
 
 const client:BotClient = new BotClient({
   intents: [
@@ -25,12 +16,22 @@ const client:BotClient = new BotClient({
 client.commands = new Collection()
 
 const dir = {
-    events:fs.readdirSync("./src/events").filter(file => file.endsWith(".ts")),
-    commands:fs.readdirSync("./src/commands")
+  events:fs.readdirSync("./src/events").filter(file => file.endsWith(".ts")),
+  commands:fs.readdirSync("./src/commands")
 }
 
+const core = {
+  events:fs.readdirSync("./src/core/events").filter(file => file.endsWith(".ts")),
+  commands:fs.readdirSync("./src/core/commands")
+}
+
+// custom
 client.handleEvents(dir.events)
 client.handleCommands(dir.commands,"./src/commands")
+// core
+client.handleEvents(core.events)
+client.handleCommands(core.commands,"./src/commands")
+
 client.login(secret.TOKEN)
 
 export { client, config, secret }

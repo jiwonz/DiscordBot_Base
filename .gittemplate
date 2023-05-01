@@ -1,5 +1,6 @@
 cfg
-src/commands
 node_modules
 package.json
 yarn.lock
+src/commands
+src/events
