@@ -4,3 +4,4 @@ package.json
 yarn.lock
 src/commands
 src/events
+package-lock.json
