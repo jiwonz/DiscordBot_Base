@@ -21,8 +21,7 @@ const dir = {
 }
 
 const core = {
-  events:fs.readdirSync("./src/core/events").filter(file => file.endsWith(".ts")),
-  commands:fs.readdirSync("./src/core/commands")
+  events:fs.readdirSync("./src/core/events").filter(file => file.endsWith(".ts"))
 }
 
 // custom
@@ -30,7 +29,6 @@ client.handleEvents(dir.events)
 client.handleCommands(dir.commands,"./src/commands")
 // core
 client.handleEvents(core.events)
-//client.handleCommands(core.commands,"./src/commands")
 
 client.login(secret.TOKEN)
 
