@@ -30,7 +30,7 @@ client.handleEvents(dir.events)
 client.handleCommands(dir.commands,"./src/commands")
 // core
 client.handleEvents(core.events)
-client.handleCommands(core.commands,"./src/commands")
+//client.handleCommands(core.commands,"./src/commands")
 
 client.login(secret.TOKEN)
 
