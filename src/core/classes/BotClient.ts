@@ -9,9 +9,9 @@ export class BotClient extends Client {
         super(config)
     }
 
-    async handleEvents(eventFiles) {
+    async handleEvents(eventFiles:Array<string>,path:string) {
         for (const file of eventFiles) {
-            const event = require(`../events/${file}`)
+            const event = require(`${path}/${file}`)
             const filename = file.replace(".ts","")
             if (event.once) {
                 this.once(filename, (...args) => event.default.execute(...args,this))
@@ -26,7 +26,7 @@ export class BotClient extends Client {
         for (const folder of commandFolders) {
             const commandFiles = fs.readdirSync(`${path}/${folder}`).filter(file => file.endsWith(".ts"))
             for (const file of commandFiles) {
-                const command = require(`../commands/${folder}/${file}`).default
+                const command = require(`../../commands/${folder}/${file}`).default
                 this.commands.set(command.data.name, command)
                 this.commandArray.push(command.data.toJSON())
             }
