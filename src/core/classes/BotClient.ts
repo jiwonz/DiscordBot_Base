@@ -26,7 +26,7 @@ export class BotClient extends Client {
         for (const folder of commandFolders) {
             const commandFiles = fs.readdirSync(`${path}/${folder}`).filter(file => file.endsWith(".ts"))
             for (const file of commandFiles) {
-                const command = require(`../../commands/${folder}/${file}`).default
+                const command = require(`${path}/${folder}/${file}`).default
                 this.commands.set(command.data.name, command)
                 this.commandArray.push(command.data.toJSON())
             }
