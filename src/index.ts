@@ -1,6 +1,7 @@
 import { IntentsBitField, Collection } from "discord.js"
 import { BotClient } from "./core/classes/BotClient"
 import * as fs from "fs"
+import * as path from "path"
 
 import config from "./cfg/config.json"
 import secret from "./cfg/secret.json"
@@ -25,10 +26,10 @@ const core = {
 }
 
 // custom
-client.handleEvents(dir.events,"./events")
-client.handleCommands(dir.commands,"./commands")
+client.handleEvents(dir.events,path.resolve("./events"))
+client.handleCommands(dir.commands,path.resolve("./commands"))
 // core
-client.handleEvents(core.events,"./core/events")
+client.handleEvents(core.events,path.resolve("./core/events"))
 
 client.login(secret.TOKEN)
 
