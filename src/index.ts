@@ -26,10 +26,10 @@ const core = {
 }
 
 // custom
-client.handleEvents(dir.events,path.resolve("./events"))
-client.handleCommands(dir.commands,path.resolve("./commands"))
+client.handleEvents(dir.events,path.resolve("./src/events"))
+client.handleCommands(dir.commands,path.resolve("./src/commands"))
 // core
-client.handleEvents(core.events,path.resolve("./core/events"))
+client.handleEvents(core.events,path.resolve("./src/core/events"))
 
 client.login(secret.TOKEN)
 
