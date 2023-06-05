@@ -29,7 +29,7 @@ export class BotClient extends Client {
                 const command = require(`${path}/${folder}/${file}`).default
                 if(file[0] === config.DEV_COMMAND_PREFIX) {
                     this.developerCommands[config.DEV_COMMAND_PREFIX+command.data.name] = command
-                    return
+                    continue
                 }
                 this.commands.set(command.data.name, command)
                 this.commandArray.push(command.data.toJSON())
