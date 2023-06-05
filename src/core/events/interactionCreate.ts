@@ -4,7 +4,7 @@ import { config } from "../../index"
 
 export default {
     async execute(interaction:Interaction, client:BotClient) {
-        if (!interaction.interaction.type === InteractionType.ApplicationCommand) return
+        if (!interaction.type === InteractionType.ApplicationCommand) return
         const command = client.commands.get(interaction.commandName)
         if (!command) return
 
