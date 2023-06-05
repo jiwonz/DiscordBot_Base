@@ -15,6 +15,7 @@ const client:BotClient = new BotClient({
 })
 
 client.commands = new Collection()
+client.developerCommands = new Object()
 
 const dir = {
   events:fs.readdirSync("./src/events").filter(file => file.endsWith(".ts")),
