@@ -7,7 +7,7 @@
     },
 
     "ACTIVITY": {
-        "InDev": "Currently in developer mode!"
+        "InDev": "Currently in developer mode"
     },
 
     "IN_DEV_MESSAGE": "The bot is currently in development mode. Available to bot developers only.",
