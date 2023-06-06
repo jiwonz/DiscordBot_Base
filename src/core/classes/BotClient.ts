@@ -2,6 +2,7 @@ import { Client, Collection } from "discord.js"
 import { REST } from "@discordjs/rest"
 import { Routes } from "discord-api-types/v10"
 import * as fs from "fs"
+import * as path from "path"
 import { config, secret } from "../../index"
 
 export class BotClient extends Client {
@@ -21,14 +22,15 @@ export class BotClient extends Client {
         }
     }
 
-    async handleCommands(commandFolders:Array<{}>,path:string) {
+    async handleCommands(commandFolders:Array<{}>,fpath:string) {
         this.commandArray = []
         for (const folder of commandFolders) {
-            const commandFiles = fs.readdirSync(`${path}/${folder}`).filter(file => file.endsWith(".ts"))
+            const commandFiles = fs.readdirSync(`${fpath}/${folder}`).filter(file => file.endsWith(".ts"))
             for (const file of commandFiles) {
-                const command = require(`${path}/${folder}/${file}`).default
+                const command = require(`${fpath}/${folder}/${file}`).default
+                const filename = path.parse(file).name
                 if(file[0] === "!") {
-                    this.developerCommands[`${config.DEV_COMMAND_PREFIX}${folder} ${file.replace("!","")}`] = command
+                    this.developerCommands[`${config.DEV_COMMAND_PREFIX}${folder} ${filename.replace("!","")}`] = command
                     continue
                 }
                 this.commands.set(file, command)
