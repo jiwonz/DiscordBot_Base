@@ -27,11 +27,11 @@ export class BotClient extends Client {
             const commandFiles = fs.readdirSync(`${path}/${folder}`).filter(file => file.endsWith(".ts"))
             for (const file of commandFiles) {
                 const command = require(`${path}/${folder}/${file}`).default
-                if(file[0] === config.DEV_COMMAND_PREFIX) {
-                    this.developerCommands[config.DEV_COMMAND_PREFIX+command.data.name] = command
+                if(file[0] === "!") {
+                    this.developerCommands[`${config.DEV_COMMAND_PREFIX}${folder} ${file.replace("!","")}`] = command
                     continue
                 }
-                this.commands.set(command.data.name, command)
+                this.commands.set(file, command)
                 this.commandArray.push(command.data.toJSON())
             }
         }
