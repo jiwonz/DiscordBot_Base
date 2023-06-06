@@ -11,8 +11,9 @@ export default {
 
             console.log(JSON.stringify(client.developerCommands))
 
-            const cmd = client.developerCommands[args[0]]
+            const cmd = client.developerCommands[`${args[0]} ${args[1]}`]
             if (cmd != null) {
+                args.splice(0,1)
                 cmd.execute(client,args,message)
             }
         }
