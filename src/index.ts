@@ -1,4 +1,4 @@
-import { IntentsBitField, Collection } from "discord.js"
+import { IntentsBitField, Collection, Partials } from "discord.js"
 import { BotClient } from "./core/classes/BotClient"
 import * as fs from "fs"
 import * as path from "path"
@@ -12,6 +12,9 @@ const client:BotClient = new BotClient({
     IntentsBitField.Flags.GuildMessages,
     IntentsBitField.Flags.MessageContent,
     IntentsBitField.Flags.DirectMessages
+  ],
+  partials: [
+    Partials.Channel
   ]
 })
 
