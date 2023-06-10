@@ -6,8 +6,8 @@ import * as path from "path"
 import { config, secret } from "../../index"
 
 export class BotClient extends Client {
-    constructor(config) {
-        super(config)
+    constructor(cfg) {
+        super(cfg)
     }
 
     async handleEvents(eventFiles:Array<string>,path:string) {

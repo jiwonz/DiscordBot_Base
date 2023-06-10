@@ -1,10 +1,11 @@
-import { Message } from "discord.js";
+import { DMChannel, Message } from "discord.js";
 import { BotClient } from "../classes/BotClient"
 import { config } from "../../index"
 
 export default {
     async execute(client:BotClient,message:Message) {
         if (!client.isDeveloper(message.author.id)) return
+        if (!(message.channel instanceof DMChannel)) return
         const args = message.content.split(" ")
 
         if (args[0][0] === config.DEV_COMMAND_PREFIX) {

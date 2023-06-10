@@ -3,11 +3,11 @@
     "DEVELOPERS": [],
 
     "STATUS": {
-        "InDev": true
+        "inDev": true
     },
 
     "ACTIVITY": {
-        "InDev": "Currently in developer mode"
+        "inDev": "Currently in developer mode"
     },
 
     "IN_DEV_MESSAGE": "The bot is currently in development mode. Available to bot developers only.",

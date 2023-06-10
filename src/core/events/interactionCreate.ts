@@ -9,7 +9,7 @@ export default {
         if (!command) return
 
         try{
-            if (config.STATUS.InDev && !client.isDeveloper(interaction.member.user.id)) {
+            if (config.STATUS.inDev && !client.isDeveloper(interaction.member.user.id)) {
                 await interaction.reply({ content: config.IN_DEV_MESSAGE, ephemeral: true })
                 return
             }
