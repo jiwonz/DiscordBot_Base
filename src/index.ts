@@ -10,7 +10,8 @@ const client:BotClient = new BotClient({
   intents: [
     IntentsBitField.Flags.Guilds,
     IntentsBitField.Flags.GuildMessages,
-    IntentsBitField.Flags.MessageContent
+    IntentsBitField.Flags.MessageContent,
+    IntentsBitField.Flags.DirectMessages
   ]
 })
 
