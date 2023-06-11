@@ -33,7 +33,7 @@ export class BotClient extends Client {
                     this.developerCommands[`${config.DEV_COMMAND_PREFIX}${folder} ${filename.replace("!","")}`] = command
                     continue
                 }
-                this.commands.set(file, command)
+                this.commands.set(filename, command)
                 this.commandArray.push(command.data.toJSON())
             }
         }
