@@ -7,6 +7,12 @@ export default {
     once: true,
     async execute(client:BotClient) {
         console.log(READY_MESSAGE);
-        if (config.STATUS.inDev) client.user.setActivity(config.ACTIVITY.inDev)
+
+        // Bot Activity
+        if (config.STATUS.inDev) {
+            client.user.setActivity(config.ACTIVITY.inDev)
+        } else {
+            client.user.setActivity(config.ACTIVITY.normal)
+        }
     },
 };
