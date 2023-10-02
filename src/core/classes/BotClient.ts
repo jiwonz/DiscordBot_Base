@@ -28,6 +28,7 @@ export class BotClient extends Client {
             const commandFiles = fs.readdirSync(`${fpath}/${folder}`).filter(file => file.endsWith(".ts"))
             for (const file of commandFiles) {
                 const command = require(`${fpath}/${folder}/${file}`).default
+                if (command.disabled) continue
                 const filename = path.parse(file).name
                 if(file[0] === "!") {
                     this.developerCommands[`${config.DEV_COMMAND_PREFIX}${folder} ${filename.replace("!","")}`] = command
