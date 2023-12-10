@@ -6,6 +6,7 @@ export default {
     async execute(client:BotClient,message:Message) {
 		const firstSplit = message.content.split(' ');
 		const args = firstSplit.map(item => item.split('\n'));
+		console.log("args debug log:",args)
 		if (args[0][0] === config.COMMAND_PREFIX) {
 
 			console.log("prefix commands debug log:",JSON.stringify(client.prefixCommands))
