@@ -6,6 +6,9 @@ export default {
     async execute(client:BotClient,message:Message) {
 		const args = message.content.split(" ")
 		if (args[0][0] === config.COMMAND_PREFIX) {
+
+			console.log("prefix commands debug log:",JSON.stringify(client.prefixCommands))
+
 			const cmd = client.prefixCommands[`${args[0]}`]
 			if (cmd != null) {
 				args.splice(0,1)
@@ -19,7 +22,7 @@ export default {
 
         if (args[0][0] === config.DEV_COMMAND_PREFIX) {
 
-            console.log(JSON.stringify(client.developerCommands))
+            console.log("dev commands debug log:",JSON.stringify(client.developerCommands))
 
             const cmd = client.developerCommands[`${args[0]} ${args[1]}`]
             if (cmd != null) {
