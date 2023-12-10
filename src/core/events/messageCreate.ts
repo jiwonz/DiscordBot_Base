@@ -4,7 +4,8 @@ import { config } from "../../index"
 
 export default {
     async execute(client:BotClient,message:Message) {
-		const args = message.content.split(" ")
+		const firstSplit = message.content.split(' ');
+		const args = firstSplit.map(item => item.split('\n'));
 		if (args[0][0] === config.COMMAND_PREFIX) {
 
 			console.log("prefix commands debug log:",JSON.stringify(client.prefixCommands))
