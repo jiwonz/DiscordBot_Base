@@ -6,7 +6,8 @@ export default {
 	async execute(client:BotClient,message:Message) {
 		if (message.author.id === client.user.id) return
 
-		const args = message.content.split(" ");
+		const firstSplit = message.content.split(" ");
+		const args = firstSplit.map(item => item.split('\n')).flat();
 
 		if (args[0][0] === config.COMMAND_PREFIX) {
 
@@ -17,8 +18,6 @@ export default {
 				args.splice(0,1)
 				if (cmd.execute != null)
 					cmd.execute(client,args,message)
-				if (cmd.executeRaw != null)
-					cmd.executeRaw(client,message)
 				return
 			}
 		}
@@ -35,8 +34,6 @@ export default {
 				args.splice(0,1)
 				if (cmd.execute != null)
 					cmd.execute(client,args,message)
-				if (cmd.executeRaw != null)
-					cmd.executeRaw(client,message)
 			}
 		}
 	},
