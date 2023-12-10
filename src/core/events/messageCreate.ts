@@ -4,6 +4,8 @@ import { config } from "../../index"
 
 export default {
     async execute(client:BotClient,message:Message) {
+		if (message.author.id === client.user.id) return
+
 		const firstSplit = message.content.split(' ');
 		const args = firstSplit.map(item => item.split('\n')).flat();
 		console.log("args debug log:",args)
