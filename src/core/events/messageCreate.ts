@@ -4,9 +4,18 @@ import { config } from "../../index"
 
 export default {
     async execute(client:BotClient,message:Message) {
+		const args = message.content.split(" ")
+		if (args[0][0] === config.COMMAND_PREFIX) {
+			const cmd = client.prefixCommands[`${args[0]}`]
+			if (cmd != null) {
+				args.splice(0,1)
+				cmd.execute(client,args,message)
+				return
+			}
+		}
+
         if (!client.isDeveloper(message.author.id)) return
         if (!(message.channel instanceof DMChannel)) return
-        const args = message.content.split(" ")
 
         if (args[0][0] === config.DEV_COMMAND_PREFIX) {
 

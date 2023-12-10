@@ -30,7 +30,11 @@ export class BotClient extends Client {
                 const command = require(`${fpath}/${folder}/${file}`).default
                 if (command.disabled) continue
                 const filename = path.parse(file).name
-                if(file[0] === "!") {
+				if (folder === "prefix") {
+					this.prefixCommands[`${config.COMMAND_PREFIX}${file}`] = command
+					continue
+				}
+                if (file[0] === "!") {
                     this.developerCommands[`${config.DEV_COMMAND_PREFIX}${folder} ${filename.replace("!","")}`] = command
                     continue
                 }
@@ -79,4 +83,5 @@ export class BotClient extends Client {
     public commands:Collection<any,any>
     public commandArray:Array<[]>
     public developerCommands:Object
+	public prefixCommands:Object
 }
