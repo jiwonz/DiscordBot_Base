@@ -9,11 +9,13 @@ export default {
 		const firstSplit = message.content.split(" ");
 		const args = firstSplit.map(item => item.split('\n')).flat();
 
-		console.log("args debug log:",args)
+		if (config.STATUS.inDev === true)
+			console.log("args debug log:",args)
 
 		if (args[0][0] === config.COMMAND_PREFIX) {
 
-			console.log("prefix commands debug log:",JSON.stringify(client.prefixCommands))
+			if (config.STATUS.inDev === true)
+				console.log("prefix commands debug log:",JSON.stringify(client.prefixCommands))
 
 			const cmd = client.prefixCommands[`${args[0]}`]
 			if (cmd != null) {
@@ -29,7 +31,8 @@ export default {
 
 		if (args[0][0] === config.DEV_COMMAND_PREFIX) {
 
-			console.log("dev commands debug log:",JSON.stringify(client.developerCommands))
+			if (config.STATUS.inDev === true)
+				console.log("dev commands debug log:",JSON.stringify(client.developerCommands))
 
 			const cmd = client.developerCommands[`${args[0]} ${args[1]}`]
 			if (cmd != null) {
